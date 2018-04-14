@@ -18,6 +18,60 @@ For Ubuntu, this PPA provides the latest stable upstream Git version
 # apt update; 
 # apt install git
 
+mkdir git-repos-home
+cd git-repos-home
+
+- Creating an empty Git Repository:
+mkdir blank-repo
+cd blank-repo
+#git init
+
+- Add Files/Directories to this repository
+#git add <filename> - If single file
+#git add . - If multiple files
+
+ - Commiting Changes to the Repository:
+ #git commit -m "initial commit"
+ #git commit -a -m "third commit"
+ 
+ - Checking a Git Repository Status:
+ #git status
+ 
+  - Reverting Changes from a Git Repo:
+  #git checkout --<filename>
+   use command before git add 
+   
+   # git reset HEAD <filename>
+   use command after git add is executed
+   # git rm --cached <filename>
+   # git status
+   # rm <filename>
+   # git status
+   
+  - View the Git Commit History:-
+   # git log
+   # git log --oneline
+   # git log - n 3
+   # git log --oneline -n 3
+   # git log <filename>
+   
+ Branching:-
+ 
+ # git branch
+ # git log --oneline
+ 
+ - Create a feature branch:
+ # git branch <foldername> 
+ # git branch
+ # git checkout <foldername>
+ Add files/directories and make commit in feature branch & Checkout to master branch
+  # git merge <feature branch name>
+  # git log --online --decorate
+  (HEAD->MASTER,feature branch name, displayed)
+  
+  - Deleting feature branch
+  # git branch -d <feature branch name>
+  
 Fedora
 # yum install git (up to Fedora 21)
 # dnf install git (Fedora 22 and later)
