@@ -1,0 +1,368 @@
+VA INSTALLATION:- (WINDOWS)
+
+
+
+Step 1: Download JDK
+======
+1. Goto Java SE download site
+2. Under "Java Platform, Standard Edition"  ⇒ Click the "JDK Download" button.
+3. Under "Java SE Development Kit 9.0.x" ⇒ Check "Accept License Agreement".
+4. Choose the JDK for your operating system, e.g., "Windows" (for 64-bit Windows OS), and download the installer 	    jdk-9.0.x_windows-x64_bin.exe.
+
+Step 2: Install JDK and JRE
+======
+Run the downloaded installer , 
+By default the JDK will be installed in directory "C:\Program Files\Java\jdk-9.0.x",
+Take note of your JDK installed directory
+
+Step 3: Include JDK's "bin" Directory in the PATH
+======
+
+How To Set the Environment Variable JAVA_HOME:-
+==============================================
+
+Many Java applications (such as Tomcat) require the environment variable JAVA_HOME to be set to the JDK installed directory.
+
+Windows' Shell searches the current directory and the directories listed in the PATH environment variable (system variable) for executable programs. JDK's programs (such as Java compiler javac.exe and Java runtime java.exe) reside in the sub-directory "bin" of the JDK installed directory. You need to include it in the PATH to run the JDK programs.
+
+To edit the PATH environment variable in Windows 7/8/10:
+-------------------------------------------------------
+
+Check if JAVA_HOME is already set. Start a CMD and issue:
+
+* SET JAVA_HOME
+
+To set the environment variable JAVA_HOME in Windows 10/8/7: 
+
+    Launch "Control Panel" ⇒ (Optional) System and Security ⇒ System ⇒ Click "Advanced system settings" on the left pane.
+    Switch to "Advanced" tab ⇒ Push "Environment Variables" button.
+    Under "System Variables" (the bottom pane), scroll down to select "Path" ⇒ Click "Edit...".
+   For Windows 10 (newer releases):
+You shall see a TABLE listing all the existing PATH entries (if not, goto next step). Click "New" ⇒ Enter the JDK's "bin" directory "c:\Program Files\Java\jdk-9.0.x\bin" (Replace x with your installation number!!!) ⇒ Select "Move Up" to move this entry all the way to the TOP
+
+To verify, RE-START a CMD (restart needed to refresh the environment) and issue:
+
+SET JAVA_HOME
+JAVA_HOME=c:\Program Files\Java\jdk-9.0.xx   <== Verify that this is YOUR JDK installed directory
+
+Notes: Starting from JDK 1.8, the installation created a directory "c:\ProgramData\Oracle\Java\javapath" and added to the PATH. It contains only JRE executables (java.exe, javaw.exe, and javaws.exe), but NOT the JDK executables (e.g., javac.exe).
+
+Step 4: Verify the JDK Installation
+======
+Launch a CMD shell via one of the following means:
+
+    Click "Search" button ⇒ Enter "cmd" ⇒ Choose "Command Prompt", or
+    right-click "Start" button ⇒ run... ⇒ enter "cmd", or
+    (Prior to Windows 10) click "Start" button ⇒ All Programs ⇒ Accessories (or Windows System) ⇒ Command Prompt, or
+    (Windows 10) click "Start" button ⇒ Windows System ⇒ Command Prompt
+
+Issue the following commands to verify your JDK installation:
+-------------------------------------------------------------
+    Issue "path" command to list the contents of the PATH environment variable. Check to make sure that your <JAVA_HOME>\bin is listed in the PATH.
+    Don't type prompt>, which denotes the command prompt!!! Key in the command (highlighted) only.
+
+    // Display the PATH entries
+  * prompt> path
+  * PATH=c:\Program Files\Java\jdk-9.0.x\bin;[other entries...]
+
+    Issue the following commands to verify that JDK/JRE are properly installed and display their version:
+
+    // Display the JRE version
+  * prompt> java -version
+    java version "9.0.1"
+    Java(TM) SE Runtime Environment (build 9.0.1+11)
+    Java HotSpot(TM) 64-Bit Server VM (build 9.0.1+11, mixed mode)
+
+    // Display the JDK version
+  * prompt> javac -version
+    javac 9.0.1
+
+Step 5: Write a Hello-World Java Program
+======
+
+    Create a directory to keep your works, e.g., "d:\myProject", or "c:\myProject", or any directory of your choice. Do NOT save your works in "Desktop" or "Documents" as they are hard to locate. The directory name shall not contain blank or special characters. Use meaningful but short name as it is easier to type.
+    
+Launch a programming text editor (such as TextPad, or NotePad++, or Sublime Text, or Atom). Begin with a new file and enter the following source code. Save the file as "Hello.java", under your work directory (e.g., d:\myProject).
+
+    /*
+     * First Java program to say Hello
+     */
+    public class Hello {   // Save as "Hello.java" under "d:\myProject"
+       public static void main(String[] args) {
+          System.out.println("Hello, world!");
+       }
+    }
+
+Step 6: Compile and Run the Hello-World Java Program
+======
+
+To compile the source code "Hello.java":
+
+    Start a CMD Shell (Click the "Start" button ⇒ "run..." ⇒ Enter "cmd").
+    Set the Current Drive to the drive where you saved your source file "Hello.java". For example, suppose that your source file is saved in drive "d", enter "d:" as follow:
+
+  *  prompt> d:
+  *  D:\xxx>
+
+    Don't enter prompt>, which denotes the command prompt.
+    Set the Current Working Directory to the directory that you saved your source file via the cd (Change Directory) command. For example, suppose that your source file is saved in directory "d:\myProject".
+
+  *  D:\xxx> cd \myProject
+  *  D:\myProject>
+
+    Issue a dir (List Directory) command to confirm that your source file is present in the current directory.
+
+  *  D:\myProject> dir
+    ......
+    xx-xxx-xx  06:25 PM               277 Hello.java
+    ......
+
+    Invoke the JDK compiler "javac" to compile the source code "Hello.java".
+
+  *  D:\myProject> javac Hello.java
+
+    The compilation is successful if the command prompt returns. Otherwise, error messages would be shown. Correct the errors in your source file and re-compile. Check "Common JDK Installation Errors", if you encounter problem compiling your program.
+    The output of the compilation is a Java class called "Hello.class". Issue a dir (List Directory) command again to check for the output.
+
+  *  D:\myProject> dir
+    ......
+    xx-xxx-xx  01:53 PM               416 Hello.class
+    xx-xxx-xx  06:25 PM               277 Hello.java
+    ......
+
+To run the program, invoke the Java Runtime "java":
+
+ *  D:\myProject> java Hello
+:Hello, world!
+
+==============================
+How to Install JDK on Ubuntu:-
+==============================
+There are several JDK implementations available for Linux, such as Oracle JDK, OpenJDK, Sun JDK, IBM JDK and GNU Java Compiler. We shall choose the Oracle JDK 8. Ubuntu chooses OpenJDK as its default JDK, which is not 100% compatible with Oracle JDK.
+
+Step 0: Check if JDK has already been Installed
+======
+
+* javac -version
+If a JDK version number (e.g., "javac 1.x.x_xx") appears, JDK has already been installed. You can skip the installation and goto step 2.
+
+To remove OpenJDK, issue command:
+
+$ sudo apt-get purge openjdk-\*
+
+Step 1: Download and Install JDK
+======
+
+Goto JDK (Java SE) download site @ http://www.oracle.com/technetwork/java/javase/downloads/index.html. 
+Under "Java Platform, Standard Edition" ⇒ "Java SE 9.0.{x}" ⇒ Click "JDK Download" ⇒ 
+Under "Java SE Development Kit 9.0.{x}" ⇒ Accept License Agreement ⇒ Select "Linux" (for 64-bit system) "tar.gz" package, 
+e.g., "jdk-9.0.{x}-linux-x64_bin.tar.gz". (To check your OS version, goto "Settings" ⇒ "Details".)
+The tarball will be downloaded in directory "~/Downloads", by default.
+We shall install JDK under "/usr/local/java" (or Ubuntu's default JDK directory /usr/lib/jvm; or /opt/java). First, create a directory "java" under "/usr/local". Open a Terminal and issue these commands:
+
+$ cd /usr/local
+$ sudo mkdir java
+
+Extract the downloaded package (Check your downloaded filename!)
+
+$ cd /usr/local/java
+$ sudo tar xzvf ~/Downloads/jdk-9.0.{x}-linux-x64_bin.tar.gz
+       // x: extract, z: for unzipping gz, v: verbose, f: filename
+
+JDK shall be extracted in a folder "/usr/local/java/jdk-9.0.{x}", where {xx} is the upgrade number.
+
+Inform the Ubuntu to use this JDK/JRE: 
+---------------------------------------
+// Setup the location of java, javac and javaws
+$ sudo update-alternatives --install "/usr/bin/java" "java" "/usr/local/java/jdk-9.0.{x}/jre/bin/java" 1
+      // --install symlink name path priority
+$ sudo update-alternatives --install "/usr/bin/javac" "javac" "/usr/local/java/jdk-9.0.{x}/bin/javac" 1
+$ sudo update-alternatives --install "/usr/bin/javaws" "javaws" "/usr/local/java/jdk-9.0.{x}/jre/bin/javaws" 1
+ 
+// Use this Oracle JDK/JRE as the default
+$ sudo update-alternatives --set java /usr/local/java/jdk-9.0.{x}/jre/bin/java
+      // --set name path
+$ sudo update-alternatives --set javac /usr/local/java/jdk-9.0.{x}/bin/javac
+$ sudo update-alternatives --set javaws /usr/local/java/jdk-9.0.{x}/jre/bin/javaws
+
+The above steps set up symlinks java, javac, javaws at /usr/bin (which is in the PATH), that link to /etc/alternatives and then to JDK bin directory.
+The "alternatives" system aims to resolve the situation where several programs fulfilling the same function (e.g., different version of JDKs). It sets up symlinks thru /etc/alternatives to refer to the actual programs to be used.
+
+$ ls -ld /usr/bin/java*
+lrwxrwxrwx 1 root root 22 Mar 31 20:41 /usr/bin/java -> /etc/alternatives/java
+lrwxrwxrwx 1 root root 23 Mar 31 20:42 /usr/bin/javac -> /etc/alternatives/javac
+lrwxrwxrwx 1 root root 24 Mar 31 20:42 /usr/bin/javaws -> /etc/alternatives/javaws
+ 
+$ ls -ld /etc/alternatives/java*
+lrwxrwxrwx 1 root root 40 Aug 29 18:18 /etc/alternatives/java -> /usr/local/java/jdk-9.0.x/jre/bin/java
+lrwxrwxrwx 1 root root 37 Aug 29 18:18 /etc/alternatives/javac -> /usr/local/java/jdk-9.0.x/bin/javac
+lrwxrwxrwx 1 root root 42 Aug 29 18:19 /etc/alternatives/javaws -> /usr/local/java/jdk-9.0.x/jre/bin/javaws
+
+Alternatively, you can include the JDK's bin and JRE's bin into the PATH directly.
+
+To verify the JDK installation, issue these commands:
+-----------------------------------------------------
+// Show the Java Compiler (javac) version
+$ javac -version
+javac 9.0.1
+ 
+// Show the Java Runtime (java) version
+$ java -version
+java version "9.0.1"
+Java(TM) SE Runtime Environment (build xx-xxx)
+Java HotSpot(TM) 64-Bit Server VM (build xx-xxx, mixed mode)
+ 
+// Show the location of javac and java
+$ which javac
+/usr/bin/javac
+$ which java
+/usr/bin/java
+
+Take note of your JDK installed directory
+
+Set the Environment Variable JAVA_HOME:-
+---------------------------------------
+
+JAVA_HOME  enviroment variable points to the installation path for the java development kit.
+Many Java applications (such as Tomcat) require the environment variable JAVA_HOME to be set to the JDK installed directory.
+
+Add JDK's binary directory ("bin") to the "PATH" by editing "/etc/profile":
+--------------------------------------------------------------------------
+$ cd /etc
+$ gksudo gedit profile   // OR "sudo nano profile" to use the console-based nano editor
+
+Add these lines at the end of the file "/etc/profile", replace "{x}" with the actual number:
+
+export JAVA_HOME=/usr/local/java/jdk-9.0.{x}
+(or) export JAVA_HOME=/usr/local/jvm/java-8-oracle/jre
+export PATH=$JAVA_HOME/bin:$PATH
+
+Rerun the configuration file by:
+
+// Refresh
+$ source /etc/profile
+
+Ques:what is /etc/profile:-These files are used to set environmental items for a users shell. Items such as umask, and variables such as PS1 or PATH . The /etc/profile file is not very different however it is used to set system wide environmental variables on users shells.
+ 
+// Check the new settings for JAVA_HOME and PATH
+$ echo $JAVA_HOME
+/usr/local/java/jdk-9.0.{x}
+ 
+$ echo $PATH
+.....:/usr/local/java/jdk-9.0.{x}/bin
+
+(or) 
+
+Setting the path for JAVA_HOME :
+
+
+
+JAVA_HOME="/usr/lib/jvm/java-8-oracle"
+
+export JAVA_HOME
+
+. /etc/environment
+
+The first file that the operating system uses at login time is the /etc/environment file. The /etc/environment file contains variables specifying the basic environment for all processes. ... Each name defined by one of the strings is called an environment variable or shell variable.
+
+
+
+SET THE ENVIRONMENT VARIABLE:-
+
+
+
+vim/nano .bashrc
+
+
+Ques: what is bashrc? = It is a shell script that Bash runs whenever it is started interactively. It initializes an interactive shell session. You can put any command in that file that you could type at the command prompt.
+
+
+export JAVA_HOME=/usr/lib/jvm/jdk1.8.0_161  
+
+export PATH=$PATH:$JAVA_HOME/bin
+
+
+
+checking Environment Variable is set or not:
+
+
+
+echo $JAVA_HOME
+
+
+Step 2: Compile and Run a Hello-world Java Program
+======
+    File Explorer ⇒ Home ⇒ Create a new folder called "myProject" to keep our works.
+    Open "Text Editor" (gedit). Enter the following source code and save as "Hello.java" under the "~/myProject" directory created earlier.
+
+    public class Hello {   // To save as "Hello.java" under "~/myProject"
+       public static void main(String[] args) {
+          System.out.println("Hello, world from Ubuntu!");
+       }
+    }
+
+    To compile the Hello-world Java program, launch a Terminal and issue these commands:
+
+    // Change directory to where the source code resides
+    $ cd ~/myProject
+     
+    // List the contents of current directory. Check for "Hello.java"
+    $ ls
+    ...... Hello.java ....
+     
+    // Compile "Hello.java" into "Hello.class"
+    $ javac Hello.java
+     
+    // Check for "Hello.class"
+    $ ls
+    ...... Hello.class ....
+
+    Run the Hello-world Java program:
+
+    // Run "Hello.class"
+    $ java Hello
+    Hello, world from Ubuntu!
+
+
+IN CASE OF NEW MACHINE CREATED USE THIS:
+
+sudo apt-get install software-properties-common python-software-properties -y
+
+
+
+sudo add-apt-repository ppa:webupd8team/java
+
+sudo apt-get update
+
+sudo apt-get install oracle-java8-installer
+
+java -version
+
+
+Setting the path for JAVA_HOME :
+
+
+
+JAVA_HOME="/usr/lib/jvm/java-8-oracle"
+
+export JAVA_HOME
+
+. /etc/environment
+
+SET THE ENVIRONMENT VARIABLE:-
+
+vim/nano .bashrc
+export JAVA_HOME=/usr/lib/jvm/jdk1.8.0_161  
+export PATH=$PATH:$JAVA_HOME/bin
+
+
+
+- checking Environment Variable is set or not:
+
+echo $JAVA_HOME
+
+- TO REMOVE JAVA:-
+
+sudo apt-get purge openjdk-*
+
+
