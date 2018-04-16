@@ -1,0 +1,28 @@
+ven Describes how the software is built.
+Maven Describes the Project Dependencies.
+
+Java build tools ;- ( Maven,Gradle,Ant)
+
+
+sudo apt-get update -y
+
+cd /opt
+
+sudo wget http://redrockdigimark.com/apachemirror/maven/maven-3/3.5.3/binaries/apache-maven-3.5.3-bin.tar.gz
+
+
+sudo tar -xvzf apache-maven-3.5.3-bin.tar.gz
+
+rename the folder :
+sudo mv apache-maven-3.5.3 maven
+
+Add bin directory of Maven folder to the PATH environment variable:-
+
+nano .bashrc
+
+export M2_HOME=/home/ubuntu/applications/maven
+export PATH=${M2_HOME}/bin:${PATH}
+
+source .bashrc
+
+mvn --version

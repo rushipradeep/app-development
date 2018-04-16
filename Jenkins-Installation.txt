@@ -1,0 +1,98 @@
+tep 1?—?Installing Jenkins
+======
+First, we’ll add the repository key to the system, run the below command from your terminal
+
+* sudo wget -q -O - https://pkg.jenkins.io/debian/jenkins-ci.org.key | sudo apt-key add -
+
+When the key is added, the system will return OK.
+
+
+Next, we’ll append the Debian package repository address to the server’s sources.list:
+
+* echo "deb http://pkg.jenkins-ci.org/debian binary/" | sudo tee -a /etc/apt/sources.list.d/jenkins.list
+
+Let’s run a system update:
+
+* sudo apt-get update
+
+Now let’s install Jenkins:
+
+* sudo apt-get install jenkins -y
+
+
+Step 2?—?Starting the Jenkins Server
+======
+* sudo systemctl start jenkins
+
+Lets verify that Jenkins has started successfully with the below command:
+
+* sudo systemctl status jenkins
+
+If all went well, the output will show that the service is Active.
+
+
+Step 3?—?Configuring the Firewall Settings
+======
+
+Jenkins runs on port 8080 by default, lets allow access to the port
+
+$ sudo ufw allow 8080
+
+Check the status of the command we ran above
+
+$ sudo ufw status
+
+If you receive an inactive status after running the above command, run the below command to fix it
+
+$ sudo ufw enable
+
+Again Check the status of the command we ran above
+
+$ sudo ufw status
+
+
+Step 4?—?Setting up Jenkins
+======
+
+Because our Jenkins server is on AWS we will need to expose port :8080 in our security group
+
+Lets jump back into the EC2 console view, select Security Groups from the left side scroll bar
+
+And choose Create Security Group
+Security group name: xxxxxxxxxxxx
+Descriptiion: xxxxxxxxxxx
+vpc : xxxxxxx
+
+Inbound :-
+
+SSH - 22
+CUSTOM TCP - 8080
+Return to the EC2 console and change your VM’s security group to the newly created Security Group
+
+Select Launch Instance : 
+Actions->Networking -> Change Security Groups:
+
+Uncheck the old security group (default) and select the newly created one
+
+Reconnect the Ec2 machine.
+
+we’ll visit Jenkins on its default port, 8080, using the server IP address: 
+
+* - http://ip_address:8080
+
+The IP address of your VM can be found in the EC2 console page
+
+Jump back into your terminal session and run the below command for the initial password
+* $ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+
+Copy the password from your terminal and paste that password into the password field in your web browser
+
+Select Continue
+
+When the installation is complete, you’ll be prompted to set up the first admin user. Go ahead and create the Admin user.
+
+Select Save and Finish
+
+
+Jenkins has been successfully installed!!
+

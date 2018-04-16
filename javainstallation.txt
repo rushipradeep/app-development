@@ -1,4 +1,54 @@
-VA INSTALLATION:- (WINDOWS)
+Check java is installed in your machine/not :
+command : java -version
+
+sudo add-apt-repository ppa:webupd8team/java
+sudo apt-get update
+sudo apt-get install oracle-java8-installer 
+java -version
+
+which java
+
+Setting the path for JAVA_HOME :
+
+
+nano .bashrc
+
+Ques: what is bashrc? = It is a shell script that Bash runs whenever it is started interactively. 
+It initializes an interactive shell session. You can put any command in that file that you could type at the command prompt.
+
+export JAVA_HOME=/usr/lib/jvm/jdk1.8.0_161
+export PATH=$PATH:$JAVA_HOME/bin
+
+source .bashrc
+
+echo $JAVA_HOME
+Check java is installed in your machine/not :
+command : java -version
+
+sudo add-apt-repository ppa:webupd8team/java
+sudo apt-get update
+sudo apt-get install oracle-java8-installer 
+java -version
+
+which java
+
+Setting the path for JAVA_HOME :
+
+
+nano .bashrc
+
+Ques: what is bashrc? = It is a shell script that Bash runs whenever it is started interactively. 
+It initializes an interactive shell session. You can put any command in that file that you could type at the command prompt.
+
+export JAVA_HOME=/usr/lib/jvm/jdk1.8.0_161
+export PATH=$PATH:$JAVA_HOME/bin
+
+source .bashrc
+
+echo $JAVA_HOME
+
+
+JAVA INSTALLATION:- (WINDOWS)
 
 
 
