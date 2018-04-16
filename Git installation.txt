@@ -1,8 +1,19 @@
 sudo apt-get update
 sudo apt-get install git -y
 git --version
+git config --global user.email "you@example.com"
+git config --global user.name "Your Name"
+git config --list
 
+As you can see, this has a slightly different format. The information is stored in the configuration file, which you can optionally edit by hand with your text editor like this:
 
+nano ~/.gitconfig
+
+[user]
+    name = Your Name
+    email = youremail@domain.com
+
+git clone (URL) 
 
 Download for Linux and Unix
 
@@ -27,6 +38,7 @@ cd blank-repo
 #git init
 
 - Add Files/Directories to this repository
+
 #git add <filename> - If single file
 #git add . - If multiple files
 
@@ -36,7 +48,7 @@ cd blank-repo
  
  - Checking a Git Repository Status:
  #git status
- 
+
   - Reverting Changes from a Git Repo:
   #git checkout --<filename>
    use command before git add 
@@ -71,6 +83,10 @@ cd blank-repo
   
   - Deleting feature branch
   # git branch -d <feature branch name>
+
+
+
+
   
 Fedora
 # yum install git (up to Fedora 21)
