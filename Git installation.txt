@@ -67,7 +67,17 @@ cd blank-repo
    # git log --oneline -n 3
    # git log <filename>
    
- Branching:-
+Pushing changes to a remote server:-
+
+$ git remote add origin ssh://git@git.domain.tld/repository.git 
+$ git remote -v
+
+Once you have a remote configured, you are now able to push your code.
+You can push code to a remote server by typing the following:
+
+$ git push origin master
+
+Branching:-
  
  # git branch
  # git log --oneline
